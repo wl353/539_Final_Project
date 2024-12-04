@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WonyoungLand</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="img/favicon.ico" rel="icon" type="img/x-icon">
+</head>
+<body>
+    <header>
+        <h1 class="hidden">Wonyoung Land</h1>
+        <div id="title-bar">
+            <div>WonyoungLand</div>
+            <div id="time">Loading...</div>
+        </div>
+    </header>
+
+    <!-- options/icons -->
+    <div id="options">
+
+        <!-- Gallery -->
+        <button id="gallery">
+            <img class="icon" src="img/icons/image-frame.svg" alt="Gallery Icon">
+            <p data-translate-key="gallery">Gallery</p>
+        </button>
+
+        <div id="gallery-window" class="window">
+            <div id="gallery-header" class="header">
+                <span data-translate-key="photoGallery">Photo Gallery</span>
+                <div id="close-gallery" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Gallery">
+                </div>
+            </div>
+
+            <div class="content">
+                <img id="gallery-image" src="" alt="Gallery Image">
+                <div id="gallery-button">
+                    <button id="prev-photo" class="nav-button" data-translate-key="prev">←</button>
+                    <button id="next-photo" class="nav-button" data-translate-key="next">→</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio -->
+        <button id="bio">
+            <img class="icon" src="img/icons/user.svg" alt="Bio Icon">
+            <p data-translate-key="bio">Bio</p>
+        </button>
+
+        <div id="bio-window" class="window">
+            <div class="header" id="bio-header">
+                <span data-translate-key="bio">Bio</span>
+                <div id="close-bio" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Bio">
+                </div>
+            </div>
+            <div class="content">
+                <p id="bio-info" data-translate-key="bioDescription">
+                    Wonyoung is a South Korean singer, dancer, and model. She is a member of the group IVE under Starship Entertainment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Playlist -->
+        <button id="playlist">
+            <img class="icon" src="img/icons/playlist.svg" alt="Playlist Icon">
+            <p data-translate-key="playlist">Playlist</p>
+        </button>
+        
+        <div id="playlist-window" class="window">
+            <div class="header" id="playlist-header">
+                <span data-translate-key="playlist">Playlist</span>
+                <span id="song-title"></span>
+                <div id="close-playlist" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Playlist">
+                </div>
+            </div>
+            <div class="content">
+                <audio id="audio-player" controls>
+                    <source src="audio/song1.mp3" type="audio/mpeg">
+                    <span data-translate-key="audioNotSupported">Your browser does not support the audio element.</span>
+                </audio>
+                <div id="audio-controls">
+                    <button id="prev-song" class="nav-button">←</button>
+                    <button id="next-song" class="nav-button">→</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video -->
+        <button id="video">
+            <img class="icon" src="img/icons/movie.svg" alt="Video Icon">
+            <p data-translate-key="video">Video</p>
+        </button>
+
+        <div id="video-window" class="window">
+            <div class="header" id="video-header">
+                <span data-translate-key="video">Video</span>
+                <div id="close-video" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Video">
+                </div>
+            </div>
+            <div class="content">
+                <video id="video-element" controls>
+                    <source src="video/video.mov" type="video/mp4">
+                    <span data-translate-key="videoNotSupported">Your browser does not support the video tag.</span>
+                </video>
+            </div>
+        </div>
+
+        <!-- Instagram -->
+        <button id="instagram">
+            <img class="icon" src="img/icons/camera.svg" alt="Instagram Icon">
+            <p data-translate-key="instagram">Instagram</p>
+        </button>
+
+        <!-- Guestbook -->
+        <button id="guestbook">
+            <img class="icon" src="img/icons/book-open.svg" alt="Guestbook Icon">
+            <p data-translate-key="guestbook">Guestbook</p>
+        </button>
+        <div id="guestbook-window" class="window">
+            <div class="header" id="guestbook-header">
+                <span data-translate-key="guestbook">Guestbook</span>
+                <div id="close-guestbook" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Guestbook">
+                </div>
+            </div>
+            <div class="content">
+                <form id="guestbook-form">
+                    <label for="guest-name" data-translate-key="guest-name-label">Name</label>
+                    <input type="text" id="guest-name" placeholder="Your name" data-translate-placeholder="guest-name" required>
+                    
+                    <label for="guest-message" data-translate-key="guest-message-label">Message</label>
+                    <textarea id="guest-message" placeholder="Your Message" data-translate-placeholder="guest-message" required></textarea>
+                    
+                    <div id="submit-guestbook" data-translate-key="submit">Submit</div>
+                </form>
+                <div id="guestbook-messages">
+                    <!-- Guest messages will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Author -->
+        <button id="author">
+            <img class="icon" src="img/icons/mail.svg" alt="Author Icon">
+            <p data-translate-key="author">Author</p>
+        </button>
+        <div id="author-window" class="window">
+            <div class="header" id="author-header">
+                <span data-translate-key="author">Author</span>
+                <div id="close-author" class="close-button">
+                    <img class="icon" src="img/icons/close-box.svg" alt="Close Author">
+                </div>
+            </div>
+            <div class="content">
+                <p id="author-info" data-translate-key="authorDescription">
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <audio id="click-sound" src="audio/click1.mp3"></audio>
+
+
+    </main>
+
+    <footer>
+        <button id="likes">
+            <span data-translate-key="sendLikes">Send Likes ♡</span>
+            <span id="like-count">0</span>
+        </button>
+
+        <button id="home">
+            <span data-translate-key="home"><img class="icon" src="img/icons/home.svg" alt="Home Icon"></span>
+        </button>
+
+        <button id="language-button" data-translate-key="language">Language</button>
+        <div id="language-options" class="hidden">
+            <button class="language-option" data-lang="en">English</button>
+            <button class="language-option" data-lang="zh">中文</button>
+            <button class="language-option" data-lang="ja">日本語</button>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
