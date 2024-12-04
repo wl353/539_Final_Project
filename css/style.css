@@ -1,11 +1,6 @@
 @font-face {
-    font-family: Simonetta;
-    src: url('/fonts/Simonetta/Simonetta-Regular.ttf');
-}
-
-@font-face {
     font-family: PressStart2P;
-    src: url('/fonts/Press_Start_2P/PressStart2P-Regular.ttf');
+    src: url('../fonts/Press_Start_2P/PressStart2P-Regular.ttf');
 }
 
 @font-face {
@@ -15,17 +10,17 @@
 
 @font-face {
     font-family: DeterminationSans;
-    src: url('/fonts/Determination-Sans-Web-Regular/determinationsansweb-webfont.ttf');
+    src: url('../fonts/Determination-Sans-Web-Regular/determinationsansweb-webfont.ttf');
 }
 
 @font-face {
     font-family: DeterminationMono;
-    src: url('/fonts/Determination-Sans-Web-Regular/determinationmonoweb-webfont.ttf');
+    src: url('../fonts/Determination-Sans-Web-Regular/determinationmonoweb-webfont.ttf');
 }
 
 @font-face {
     font-family: SilverFont;
-    src: url('/fonts/Silver.ttf');
+    src: url('../fonts/Silver.ttf');
 }
 
 body {
