@@ -383,13 +383,14 @@ form #submit-guestbook:active {
     position: absolute;
     bottom: 60px;
     right: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.408);
     padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
     z-index: 1000;
+    border-radius: 5px;
 }
 
 #language-options.hidden {
