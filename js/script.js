@@ -11,7 +11,7 @@ const translations = {
         guestbook: "Guestbook",
         author: "Author",
         bioDescription: 'Wonyoung Jang (장원영) is a South Korean singer, dancer, and model. She is a member of the group <a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a> under <a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>.',
-        authorDescription: "Hi☺ My name is Jiayi, and I'm a first-year student at UMSI. I'm designing this site for my favorite Korean singer Wonyoung with a retro theme using pixelized font and icons. I hope you enjoy it!",
+        authorDescription: "Hi☺ My name is Jiayi, and I'm a first-year student at UMSI. I'm designing this site for my favorite Korean singer Wonyoung with a retro theme using pixelized font, icons, and gradient backgrounds. I hope you enjoy it!",
         "guest-name": "... or a food you like",
         "guest-message": "Share your thoughts, or spread some love <3",
         
@@ -30,8 +30,8 @@ const translations = {
         instagram: "Instagram",
         guestbook: "留言簿",
         author: "作者",
-        bioDescription: "张元英(장원영)是韩国歌手、舞者和模特。她是Starship Entertainment旗下IVE组合的成员。",
-        authorDescription: "你好^_^ 我叫佳奕，是UMSI的一年级学生。这个网站是为我喜欢的韩国歌手小圆设计的，主题是复古风格，使用了像素化的字体和icon。希望你会喜欢！",
+        bioDescription: '张元英(장원영)是韩国歌手、舞者和模特。她是<a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>旗下<a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a>组合的成员。',
+        authorDescription: "你好^_^ 我叫佳奕，是UMSI的一年级学生。这个网站是为我喜欢的韩国歌手元英设计的，主题是复古风格，使用了像素化的字体、icon和渐变背景。希望你会喜欢！",
         "guest-name": "你的名字",
         "guest-message": "你的留言",
         "guest-name-label": "名字",
@@ -51,7 +51,7 @@ const translations = {
         instagram: "Instagram",
         guestbook: "ゲストブック",
         author: "作者",
-        bioDescription: "ウォニョン(장원영)は韓国の歌手、ダンサー、モデルです。彼女はStarship EntertainmentのIVEグループのメンバーです。",
+        bioDescription: 'ウォニョン(원영)は韓国の歌手、ダンサー、モデルです。<a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>の<a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a>グループのメンバーです。',
         authorDescription: "こんにちは^_^ UMSIの1年生のジャイです。好きな韓国人歌手ウォニョンのために、ピクセル化されたフォントとアイコンを使ってレトロなテーマのサイトをデザインしています。楽しんでいただけたら嬉しいです。",
         "guest-name": "あなたの名前",
         "guest-message": "あなたのメッセージ", 
@@ -249,21 +249,20 @@ makeDraggable(document.getElementById("playlist-header"), playlistWindow);
 const videoWindow = document.getElementById("video-window");
 const video = videoWindow.querySelector("video");
 
-// Show and Close Video Window
 showWindow(document.getElementById("video"), videoWindow);
 
 document.getElementById("close-video").addEventListener("click", () => {
-    videoWindow.style.display = "none"; // Hide the window
-    video.pause(); // Pause the video
-    video.currentTime = 0; // Reset the video to the beginning (optional)
+    videoWindow.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
 });
 
-makeDraggable(document.getElementById("video-header"), videoWindow); // Use the existing `makeDraggable` function to allow dragging
+makeDraggable(document.getElementById("video-header"), videoWindow);
 
 
 
 
-// Instagram Logic
+// Instagram
 const instagramButton = document.getElementById("instagram");
 
 instagramButton.addEventListener("click", () => {
@@ -277,7 +276,7 @@ instagramButton.addEventListener("click", () => {
 
 
 // Guestbook logic
-const guestbookWindow = document.getElementById("guestbook-window"); // The guestbook window
+const guestbookWindow = document.getElementById("guestbook-window");
 const guestbookMessages = document.getElementById("guestbook-messages");
 
 // Load guestbook messages from localStorage
@@ -404,7 +403,7 @@ document.getElementById("home").addEventListener("click", () => {
 const languageButton = document.getElementById("language-button");
 const languageOptions = document.getElementById("language-options");
 
-let currentLanguage = localStorage.getItem("language") || "en"; // Default to English
+let currentLanguage = localStorage.getItem("language") || "en";
 
 // Function to switch language
 function switchLanguage(lang) {
