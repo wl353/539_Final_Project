@@ -153,7 +153,7 @@ footer button:active {
     /* border: 1px solid #a0a0a0; */
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    /* overflow: auto; */
+    overflow: auto;
 }
 
 /* window header */
