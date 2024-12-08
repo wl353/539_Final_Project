@@ -249,7 +249,7 @@ footer button:active {
 #bio-window {
     height: 30vh;
     width: 50vw;
-    overflow: auto;
+
 }
 
 a {
@@ -488,18 +488,21 @@ form #submit-guestbook:active {
     }
 
     #playlist-window {
-        height: 20vh;
-        width: 28vw;
+        min-height: 20vh;
+        min-width: 28vw;
     }
+    
 
     #video-window {
-        height: 55vh;
+        height: 50vh;
         width: 40vw;
     }
 
     #video-element {
-        max-width: 35vw;
-        height: auto;
+        /* max-width: 35vw; */
+        max-height: 38vh;
+        width: auto;
+        /* height: auto; */
     }
 
     #guestbook-window {
