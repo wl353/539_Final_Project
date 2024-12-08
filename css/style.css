@@ -22,13 +22,16 @@
     font-family: SilverFont;
     src: url('../fonts/Silver.ttf');
 }
+html {
+    height: 100%;
+}
 
 body {
     font-family: SilverFont;
     background: linear-gradient(#FFF3F9 0%, #f8f8f8 50%, #f4e0f9 100%);
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 }
 
 :focus {
@@ -432,6 +435,7 @@ form #submit-guestbook:active {
     border: none;
     border-radius: 15px;
     font-size: 23px;
+    width: 100%;
 }
 
 
