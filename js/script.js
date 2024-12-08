@@ -12,9 +12,10 @@ const translations = {
         author: "Author",
         bioDescription: 'Wonyoung Jang (장원영) is a South Korean singer, dancer, and model. She is a member of the group <a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a> under <a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>.',
         authorDescription: "Hi☺ My name is Jiayi, and I'm a first-year student at UMSI. I'm designing this site for my favorite Korean singer Wonyoung with a retro theme using pixelized font, icons, and gradient backgrounds. I hope you enjoy it!",
-        "guest-name": "... or a food you like",
-        "guest-message": "Share your thoughts, or spread some love <3",
-        
+        guestNamePlaceholder: "... or a food you like",
+        guestMessagePlaceholder: "Share your thoughts, or spread some love <3",
+        guestNameLabel: "Name",
+        guestMessageLabel: "Message",
         submit: "Submit",
         audioNotSupported: "Your browser does not support the audio element.",
         videoNotSupported: "Your browser does not support the video tag.",
@@ -32,10 +33,10 @@ const translations = {
         author: "作者",
         bioDescription: '张元英(장원영)是韩国歌手、舞者和模特。她是<a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>旗下<a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a>组合的成员。',
         authorDescription: "你好^_^ 我叫佳奕，是UMSI的一年级学生。这个网站是为我喜欢的韩国歌手元英设计的，主题是复古风格，使用了像素化的字体、icon和渐变背景。希望你会喜欢！",
-        "guest-name": "你的名字",
-        "guest-message": "你的留言",
-        "guest-name-label": "名字",
-        "guest-message-label": "留言",
+        guestNamePlaceholder: "……或者你喜欢的食物",
+        guestMessagePlaceholder: "分享你的想法，或者传播爱 <3",
+        guestNameLabel: "名字",
+        guestMessageLabel: "留言",
         submit: "提交",
         audioNotSupported: "您的浏览器不支持音频元素。",
         videoNotSupported: "您的浏览器不支持视频标签。",
@@ -53,10 +54,10 @@ const translations = {
         author: "作者",
         bioDescription: 'ウォニョン(원영)は韓国の歌手、ダンサー、モデルです。<a href="https://en.wikipedia.org/wiki/Starship_Entertainment">Starship Entertainment</a>の<a href="https://en.wikipedia.org/wiki/Ive_(group)">IVE</a>グループのメンバーです。',
         authorDescription: "こんにちは^_^ UMSIの1年生のジャイです。好きな韓国人歌手ウォニョンのために、ピクセル化されたフォントとアイコンを使ってレトロなテーマのサイトをデザインしています。楽しんでいただけたら嬉しいです。",
-        "guest-name": "あなたの名前",
-        "guest-message": "あなたのメッセージ", 
-        "guest-name-label": "名前",
-        "guest-message-label": "メッセージ",
+        guestNamePlaceholder: "…または好きな食べ物",
+        guestMessagePlaceholder: "考えとか、愛をシェアしてください <3", 
+        guestNameLabel: "名前",
+        guestMessageLabel: "メッセージ",
         submit: "送信",
         audioNotSupported: "お使いのブラウザはオーディオ要素をサポートしていません。",
         videoNotSupported: "お使いのブラウザはビデオタグをサポートしていません。",
@@ -64,7 +65,7 @@ const translations = {
 };
 
 
-// real time logic
+// time logic
 function updateTime() {
     const now = new Date();
     const year = now.getFullYear().toString().slice(-2);
@@ -73,30 +74,29 @@ function updateTime() {
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
-    document.getElementById('time').textContent = `${hours}:${minutes}:${seconds} ${month}/${day}/${year}`;
+    document.getElementById('time').innerHTML = `${hours}:${minutes}:${seconds} ${month}/${day}/${year}`;
 }
-
 setInterval(updateTime, 1000); // update time every second
 updateTime();
 
 
-// open & close window logic
+// open & close window
 function showWindow(button, window) {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function() {
         window.style.display = "block";
         positionWindow(window);
     });
 }
 
 function closeWindow(closeButton, window) {
-    closeButton.addEventListener("click", () => {
+    closeButton.addEventListener("click", function() {
         window.style.display = "none";
     });
 }
 
 // dynamically position windows
 let windowOffsetX = 15;
-let windowOffsetY = 5;
+let windowOffsetY = 2;
 const windowOffsetStep = 2;
 
 function positionWindow(window) {
@@ -110,12 +110,14 @@ function positionWindow(window) {
     if (windowOffsetY > 20) windowOffsetY = 5;
 }
 
-windowOffsetX = 15;
-windowOffsetY = 5;
+windowOffsetX = 15; // reset on page load
+windowOffsetY = 2;
 
 
 
-// draggable window logic
+
+// draggable windows
+// https://stackoverflow.com/questions/71372709/can-you-help-me-to-do-movable-window-in-js
 function makeDraggable(header, window) {
     let offsetX = 0;
     let offsetY = 0;
@@ -124,7 +126,6 @@ function makeDraggable(header, window) {
     function startDragging(e) {
         isDragging = true;
 
-        // For touch events, use `touches[0]` to get touch coordinates
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
@@ -165,8 +166,10 @@ function makeDraggable(header, window) {
 
 
 
-// Gallery logic
+// Gallery
+// https://stackoverflow.com/questions/25151339/how-to-display-images-from-a-javascript-array-object-starting-with-the-first-im
 const galleryWindow = document.getElementById("gallery-window");
+
 const photos = [
     "img/photos/photo1.jpg",
     "img/photos/photo2.jpg",
@@ -174,31 +177,32 @@ const photos = [
     "img/photos/photo4.jpg",
     "img/photos/photo5.jpg"
 ];
+
 let currentPhotoIndex = 0;
 
-function updateGalleryImage() {
-    document.getElementById("gallery-image").src = photos[currentPhotoIndex];
-}
 // next photo
-document.getElementById("next-photo").addEventListener("click", () => {
+document.getElementById("next-photo").addEventListener("click", function() {
+    // currentPhotoIndex++;
     currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-    updateGalleryImage();
+    document.getElementById("gallery-image").src = photos[currentPhotoIndex];
 });
+
 // prev photo
-document.getElementById("prev-photo").addEventListener("click", () => {
+document.getElementById("prev-photo").addEventListener("click", function() {
+    // currentPhotoIndex--;
     currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
-    updateGalleryImage();
+    document.getElementById("gallery-image").src = photos[currentPhotoIndex];
 });
 
 showWindow(document.getElementById("gallery"), galleryWindow);
 closeWindow(document.getElementById("close-gallery"), galleryWindow);
 makeDraggable(document.getElementById("gallery-header"), galleryWindow);
 
-updateGalleryImage(); // initialize Gallery
+document.getElementById("gallery-image").src = photos[currentPhotoIndex];
 
 
 
-// Bio Logic
+// Bio
 const bioWindow = document.getElementById("bio-window");
 showWindow(document.getElementById("bio"), bioWindow);
 closeWindow(document.getElementById("close-bio"), bioWindow);
@@ -208,10 +212,17 @@ makeDraggable(document.getElementById("bio-header"), bioWindow);
 
 
 
-// Playlist Logic
+// Playlist
 const playlistWindow = document.getElementById("playlist-window");
-const songs = ["audio/song1.mp3", "audio/song2.mp3", "audio/song3.mp3"];
-const songTitles = ["Off The Record", "OTT", "Payback"];
+const songs = [
+    "audio/song1.mp3", 
+    "audio/song2.mp3", 
+    "audio/song3.mp3"
+];
+const songTitles = [
+    "Off The Record", 
+    "OTT", 
+    "Payback"];
 let currentSongIndex = 0;
 const audioPlayer = document.getElementById("audio-player");
 
@@ -222,20 +233,19 @@ function updatePlaylist() {
 }
 document.getElementById("song-title").textContent = songTitles[currentSongIndex];
 
-document.getElementById("prev-song").addEventListener("click", () => {
+document.getElementById("prev-song").addEventListener("click", function() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     updatePlaylist();
 });
 
-document.getElementById("next-song").addEventListener("click", () => {
+document.getElementById("next-song").addEventListener("click", function() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     updatePlaylist();
 });
 
-
 showWindow(document.getElementById("playlist"), playlistWindow);
 
-document.getElementById("close-playlist").addEventListener("click", () => {
+document.getElementById("close-playlist").addEventListener("click", function() {
     playlistWindow.style.display = "none";
     audioPlayer.pause();
     audioPlayer.currentTime = 0;
@@ -245,13 +255,13 @@ makeDraggable(document.getElementById("playlist-header"), playlistWindow);
 
 
 
-// Video Logic
+// Video
 const videoWindow = document.getElementById("video-window");
 const video = videoWindow.querySelector("video");
 
 showWindow(document.getElementById("video"), videoWindow);
 
-document.getElementById("close-video").addEventListener("click", () => {
+document.getElementById("close-video").addEventListener("click", function() {
     videoWindow.style.display = "none";
     video.pause();
     video.currentTime = 0;
@@ -263,9 +273,7 @@ makeDraggable(document.getElementById("video-header"), videoWindow);
 
 
 // Instagram
-const instagramButton = document.getElementById("instagram");
-
-instagramButton.addEventListener("click", () => {
+document.getElementById("instagram").addEventListener("click", function() {
     window.open("https://www.instagram.com/for_everyoung10/?hl=en", "_blank");
 });
 
@@ -275,73 +283,64 @@ instagramButton.addEventListener("click", () => {
 
 
 
-// Guestbook logic
+// Guestbook
+// https://www.w3schools.com/jsreF/prop_win_localstorage.asp
+// https://blog.logrocket.com/localstorage-javascript-complete-guide/
 const guestbookWindow = document.getElementById("guestbook-window");
 const guestbookMessages = document.getElementById("guestbook-messages");
 
-// Load guestbook messages from localStorage
 let messages = JSON.parse(localStorage.getItem("guestbookMessages")) || [];
 
-// Render all messages
 function renderMessages(v) {
     guestbookMessages.innerHTML = "";
-    messages.forEach((message, index) => {
+    // add a delete button
+    messages.forEach(function(message, index) {
         const messageElement = document.createElement("div");
         messageElement.classList.add("guest-message");
         messageElement.innerHTML = `
             <span><strong>${message.name}</strong> (${message.date})</span>
             <p>${message.message}</p>
-            <div class="delete-button" data-index="${index}"><img class="icon" src="img/icons/delete.svg" alt="Delete Icon"></div>
+            <div class="delete-button" data-index="${index}" tabindex="0"><img class="icon" src="img/icons/delete.svg" alt="Delete Icon"></div>
         `;
         guestbookMessages.appendChild(messageElement);
     });
 
-    // Add event listeners to delete buttons
-    document.querySelectorAll(".delete-button").forEach((button) => {
-        button.addEventListener("click", (e) => {
-            const index = e.target.getAttribute("data-index"); // Get the message index
-            deleteMessage(index);
+    // delete
+    document.querySelectorAll(".delete-button").forEach(function(button) {
+        button.addEventListener("click", function(e) {
+            const index = parseInt(e.currentTarget.getAttribute("data-index"), 10); 
+            messages.splice(index, 1);
+            localStorage.setItem("guestbookMessages", JSON.stringify(messages));
+            renderMessages();
         });
     });
 }
 
-// Add a new message
-function addMessage(name, message) {
-    const now = new Date();
-    const formattedDate = now.toLocaleString(); // Get formatted date and time
-    messages.push({ name, message, date: formattedDate });
-    localStorage.setItem("guestbookMessages", JSON.stringify(messages)); // Save to localStorage
-    renderMessages();
-}
-
-// Delete a message
-function deleteMessage(index) {
-    messages.splice(index, 1); // Remove the message from the array
-    localStorage.setItem("guestbookMessages", JSON.stringify(messages)); // Update localStorage
-    renderMessages(); // Re-render the messages
-}
-
-// Handle form submission
+// submit - add a new message
 const submitGuestbookButton = document.getElementById("submit-guestbook");
 
-submitGuestbookButton.addEventListener("click", (e) => {
-    e.preventDefault();
+submitGuestbookButton.addEventListener("click", function(e) {
     const name = document.getElementById("guest-name").value.trim();
     const message = document.getElementById("guest-message").value.trim();
 
     if (name && message) {
-        addMessage(name, message);
+        const now = new Date();
+        const formattedDate = now.toLocaleString();
+        messages.push({ name, message, date: formattedDate });
+        localStorage.setItem("guestbookMessages", JSON.stringify(messages));
+        renderMessages();
+
         document.getElementById("guest-name").value = "";
         document.getElementById("guest-message").value = "";
     }
 });
 
-// Apply guestbook window logic
+
+
 showWindow(document.getElementById("guestbook"), guestbookWindow);
 closeWindow(document.getElementById("close-guestbook"), guestbookWindow);
 makeDraggable(document.getElementById("guestbook-header"), guestbookWindow);
 
-// Render messages on page load
 renderMessages();
 
 
@@ -349,7 +348,7 @@ renderMessages();
 
 
 
-// Author logic
+// Author
 const authorWindow = document.getElementById("author-window");
 showWindow(document.getElementById("author"), authorWindow); 
 closeWindow(document.getElementById("close-author"), authorWindow);
@@ -359,18 +358,18 @@ makeDraggable(document.getElementById("author-header"), authorWindow);
 
 
 
-// Send Likes
+// Send likes
 const likeCount = document.getElementById("like-count");
 
 let count = parseInt(localStorage.getItem("like-count")) || 0;
 likeCount.textContent = count;
 
-document.getElementById("likes").addEventListener("click", function () {
+document.getElementById("likes").addEventListener("click", function() {
     count++;
     likeCount.textContent = count;
     localStorage.setItem("like-count", count);
 
-    // Create the heart animation
+    // heart animation
     const heart = document.createElement("span");
     heart.classList.add("heart-animation");
     heart.textContent = "♡";
@@ -389,8 +388,8 @@ document.getElementById("likes").addEventListener("click", function () {
 
 
 // Home button - close all windows when Home button is clicked
-document.getElementById("home").addEventListener("click", () => {
-    document.querySelectorAll(".window").forEach((window) => {
+document.getElementById("home").addEventListener("click", function() {
+    document.querySelectorAll(".window").forEach(function(window) {
         window.style.display = "none";
     });
 });
@@ -400,54 +399,47 @@ document.getElementById("home").addEventListener("click", () => {
 
 
 // Language
-const languageButton = document.getElementById("language-button");
-const languageOptions = document.getElementById("language-options");
-
+// https://stackoverflow.com/questions/32008125/using-javascript-to-change-website-language
 let currentLanguage = localStorage.getItem("language") || "en";
 
-// Function to switch language
 function switchLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem("language", lang);
     
-    const translatableElements = document.querySelectorAll("[data-translate-key]");
-    translatableElements.forEach((element) => {
-        const key = element.getAttribute("data-translate-key");
+    // translate each key
+    document.querySelectorAll("[data-translate-key]").forEach(function(e) {
+        const key = e.getAttribute("data-translate-key");
         if (translations[lang][key]) {
-            element.innerHTML = translations[lang][key];
+            e.innerHTML = translations[lang][key];
+        }
+    });
+    // placeholder
+    document.querySelectorAll("[data-translate-placeholder]").forEach(function(e) {
+        const key = e.getAttribute("data-translate-placeholder");
+        if (translations[lang][key]) {
+            e.setAttribute("placeholder", translations[lang][key]);
         }
     });
 
-    // Update translatable placeholders
-    const placeholderElements = document.querySelectorAll("[data-translate-placeholder]");
-    placeholderElements.forEach((element) => {
-        const key = element.getAttribute("data-translate-placeholder");
-        if (translations[lang][key]) {
-            element.setAttribute("placeholder", translations[lang][key]);
-        }
-    });
+    // change button
+    document.getElementById("language-button").textContent = translations[lang]["language"] || "Language";
 
-    // Update the button text
-    languageButton.textContent = translations[lang]["language"] || "Language";
-
-    // Hide the dropdown
-    languageOptions.classList.add("hidden");
+    
+    document.getElementById("language-options").classList.add("hidden");
 }
 
-// Toggle dropdown visibility
-languageButton.addEventListener("click", () => {
-    languageOptions.classList.toggle("hidden");
+
+document.getElementById("language-button").addEventListener("click", function() {
+    document.getElementById("language-options").classList.toggle("hidden");
 });
 
-// Handle language selection
-document.querySelectorAll(".language-option").forEach((button) => {
-    button.addEventListener("click", (event) => {
+document.querySelectorAll(".language-option").forEach(function(button) {
+    button.addEventListener("click", function(event) {
         const selectedLanguage = event.target.getAttribute("data-lang");
         switchLanguage(selectedLanguage);
     });
 });
 
-// Initialize content on page load
 switchLanguage(currentLanguage);
 
 

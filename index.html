@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WonyoungLand</title>
+    <title>Wonyoungland</title>
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -14,7 +14,7 @@
     <header>
         <h1 class="hidden">Wonyoung Land</h1>
         <div id="title-bar">
-            <div>WonyoungLand</div>
+            <div>Wonyoungland</div>
             <div id="time">Loading...</div>
         </div>
     </header>
@@ -31,16 +31,18 @@
         <div id="gallery-window" class="window">
             <div id="gallery-header" class="header">
                 <span data-translate-key="photoGallery">Photo Gallery</span>
-                <div id="close-gallery" class="close-button">
+                <div id="close-gallery" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Gallery">
                 </div>
             </div>
 
             <div class="content">
-                <img id="gallery-image" src="" alt="Gallery Image">
+                <img id="gallery-image" src="" alt="A collection of photos about Wonyoung">
                 <div id="gallery-button">
-                    <button id="prev-photo" class="nav-button" data-translate-key="prev">←</button>
-                    <button id="next-photo" class="nav-button" data-translate-key="next">→</button>
+                    <!-- <button id="prev-photo" class="nav-button" data-translate-key="prev">←</button>
+                    <button id="next-photo" class="nav-button" data-translate-key="next">→</button> -->
+                    <div tabindex="0" id="prev-photo" class="nav-button" data-translate-key="prev">←</div>
+                    <div tabindex="0" id="next-photo" class="nav-button" data-translate-key="next">→</div>
                 </div>
             </div>
         </div>
@@ -54,7 +56,7 @@
         <div id="bio-window" class="window">
             <div class="header" id="bio-header">
                 <span data-translate-key="bio">Bio</span>
-                <div id="close-bio" class="close-button">
+                <div id="close-bio" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Bio">
                 </div>
             </div>
@@ -75,7 +77,7 @@
             <div class="header" id="playlist-header">
                 <span data-translate-key="playlist">Playlist</span>
                 <span id="song-title"></span>
-                <div id="close-playlist" class="close-button">
+                <div id="close-playlist" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Playlist">
                 </div>
             </div>
@@ -85,8 +87,10 @@
                     <span data-translate-key="audioNotSupported">Your browser does not support the audio element.</span>
                 </audio>
                 <div id="audio-controls">
-                    <button id="prev-song" class="nav-button">←</button>
-                    <button id="next-song" class="nav-button">→</button>
+                    <!-- <button id="prev-song" class="nav-button">←</button>
+                    <button id="next-song" class="nav-button">→</button> -->
+                    <div tabindex="0" id="prev-song" class="nav-button">←</div>
+                    <div tabindex="0" id="next-song" class="nav-button">→</div>
                 </div>
             </div>
         </div>
@@ -100,7 +104,7 @@
         <div id="video-window" class="window">
             <div class="header" id="video-header">
                 <span data-translate-key="video">Video</span>
-                <div id="close-video" class="close-button">
+                <div id="close-video" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Video">
                 </div>
             </div>
@@ -108,7 +112,9 @@
                 <video id="video-element" controls>
                     <source src="video/video.mp4" type="video/mp4">
                     <span data-translate-key="videoNotSupported">Your browser does not support the video tag.</span>
+                    
                 </video>
+                <p class="caption">Wonyoung's Debut Profile Film (2021)</p>
             </div>
         </div>
 
@@ -126,19 +132,19 @@
         <div id="guestbook-window" class="window">
             <div class="header" id="guestbook-header">
                 <span data-translate-key="guestbook">Guestbook</span>
-                <div id="close-guestbook" class="close-button">
+                <div id="close-guestbook" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Guestbook">
                 </div>
             </div>
             <div class="content">
                 <form id="guestbook-form">
-                    <label for="guest-name" data-translate-key="guest-name-label">Name</label>
-                    <input type="text" id="guest-name" placeholder="Your name" data-translate-placeholder="guest-name" required>
+                    <label for="guest-name" data-translate-key="guestNameLabel">Name</label>
+                    <input type="text" id="guest-name" placeholder="Your name" data-translate-placeholder="guestNamePlaceholder" required>
                     
-                    <label for="guest-message" data-translate-key="guest-message-label">Message</label>
-                    <textarea id="guest-message" placeholder="Your Message" data-translate-placeholder="guest-message" required></textarea>
+                    <label for="guest-message" data-translate-key="guestMessageLabel">Message</label>
+                    <textarea id="guest-message" placeholder="Your Message" data-translate-placeholder="guestMessagePlaceholder" required></textarea>
                     
-                    <div id="submit-guestbook" data-translate-key="submit">Submit</div>
+                    <div id="submit-guestbook" data-translate-key="submit" tabindex="0">Submit</div>
                 </form>
                 <div id="guestbook-messages">
                     <!-- Guest messages will appear here -->
@@ -154,7 +160,7 @@
         <div id="author-window" class="window">
             <div class="header" id="author-header">
                 <span data-translate-key="author">Author</span>
-                <div id="close-author" class="close-button">
+                <div id="close-author" class="close-button" tabindex="0">
                     <img class="icon" src="img/icons/close-box.svg" alt="Close Author">
                 </div>
             </div>

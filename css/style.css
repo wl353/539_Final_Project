@@ -31,6 +31,11 @@ body {
     height: 100vh;
 }
 
+:focus {
+    outline: 2px solid #007BFF;
+    outline-offset: 2px;
+}
+
 /* header */
 #title-bar {
     background: linear-gradient(to right, #ffcbe5 0%, #f8f8f8 50%, #f7d6ff 100%);
@@ -59,7 +64,7 @@ h1.hidden {
 /* options/icons */
 #options {
     position: absolute;
-    top: 6vh;
+    top: 7vh;
     left: 0;
     max-height: 70vh;
     display: flex;
@@ -69,7 +74,7 @@ h1.hidden {
     justify-content: center;
 }
 
-#options button {
+#options button, .nav-button {
     padding: 10px;
     margin: 8px;
     display: flex;
@@ -83,7 +88,7 @@ h1.hidden {
 }
 
 
-#options button:active {
+#options button:active, .nav-button:active {
     transform: translate(2px, 2px);
     box-shadow: -2px -3px 0px rgba(0, 0, 0, 0.2);
 }
@@ -145,6 +150,7 @@ footer button:active {
     /* border: 1px solid #a0a0a0; */
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    /* overflow: auto; */
 }
 
 /* window header */
@@ -176,7 +182,7 @@ footer button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
 }
 
 
@@ -185,21 +191,45 @@ footer button:active {
 
 /* Gallery */
 #gallery-window {
-    height: 58vh;
-    width: 70vw;
+    min-height: 54vh;
+    min-width: 70vw;
 }
 
-#gallery-button {
+#gallery-image {
+    max-height: 50vh;
+    width: auto;
+}
+
+/* #gallery-button {
     display: flex;
     position: absolute;
     bottom: -18px;
+} */
+#gallery-button {
+    display: flex;
+    /* margin-top: 3px; */
 }
 
+/* .nav-button {
+    border: solid 1px #bababa;
+    text-align: center;
+    width: max-content;
+    font-size: 23px;
+    padding: 6px 5px 0 5px;
+    margin: 3px;
+    color: #606060;
+    background: linear-gradient(#f8f8f8 0%, #e1e1e1 110%);
+    cursor: pointer;
+} */
 .nav-button {
-    color: #FF29A2;
+    text-align: center;
+    width: max-content;
     font-size: 25px;
+    padding: 8px 10px 0 10px;
     cursor: pointer;
 }
+
+
 
 .nav-button:active {
     transform: translate(2px, 2px);
@@ -239,29 +269,35 @@ a:active {
 
 /* Playlist */
 #playlist-window {
-    height: 15vh;
-    width: 80vw;
+    min-height: 15vh;
+    min-width: 80vw;
 }
 
 #audio-controls {
     display: flex;
     justify-content: center;
-    position: absolute;
-    bottom: -18px;
+
+    /* position: absolute;
+    bottom: -18px; */
 }
 
 
 /* Video */
 #video-window {
-    height: 36vh;
+    height: 32vh;
     width: 90vw;
+    text-align: center;
+    overflow: auto;
 }
 
 #video-element {
-    height: 30vh;
-    width: 85vw;
+    max-width: 85vw;
+    height: auto;
 }
-
+.caption {
+    font-size: 25px;
+    padding-top: 10px;
+}
 
 /* Guestbook */
 #guestbook-window {
@@ -408,7 +444,7 @@ form #submit-guestbook:active {
         font-size: 13px;
     }
 
-    #options button:hover {
+    #options button:hover, .nav-button:hover {
         position: relative;
         top: -2px;
         box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.2);
@@ -421,6 +457,11 @@ form #submit-guestbook:active {
     }
 
 
+    .nav-button {
+        
+        padding: 8px 18px 0 18px;
+    }
+
     footer button:hover {
         box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.2);
         cursor: pointer;
@@ -430,41 +471,41 @@ form #submit-guestbook:active {
     }
 
     #gallery-window {
-        height: 80vh;
-        width: 40vw;
+        min-height: 80vh;
+        min-width: 38vw;
     }
     #gallery-image {
-        height: 70vh;
+        max-height: 68vh;
     }
 
     #bio-window {
         height: 30vh;
-        width: 30vw;
+        width: 28vw;
     }
 
     #playlist-window {
         height: 20vh;
-        width: 30vw;
+        width: 28vw;
     }
 
     #video-window {
-        height: 60vh;
-        width: 45vw;
+        height: 55vh;
+        width: 40vw;
     }
 
     #video-element {
-        height: 52vh;
-        width: 40vw;
+        max-width: 35vw;
+        height: auto;
     }
 
     #guestbook-window {
         height: 70vh;
-        width: 50vw;
+        width: 45vw;
     }
 
     #author-window {
         height: 30vh;
-        width: 30vw;
+        width: 28vw;
     }
 
 
