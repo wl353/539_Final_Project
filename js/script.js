@@ -375,7 +375,7 @@ document.getElementById("likes").addEventListener("click", function() {
     heart.textContent = "♡";
     this.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(function() {
         heart.remove();
     }, 500);
 });
@@ -446,7 +446,7 @@ switchLanguage(currentLanguage);
 
 // click sound
 const clickSound = document.getElementById("click-sound");
-document.addEventListener("click", () => {
+document.addEventListener("click", function() {
     clickSound.currentTime = 0;
     clickSound.play();
 });
